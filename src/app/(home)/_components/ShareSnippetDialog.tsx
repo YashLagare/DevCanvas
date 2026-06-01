@@ -1,3 +1,5 @@
+"use client";
+
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useMutation } from "convex/react";
 import { X } from "lucide-react";

@@ -4,6 +4,7 @@ import "../app/globals.css";
 
 import Footer from "@/components/Footer";
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
+import ToastProvider from "@/components/ToastProvider";
 import {
   ClerkProvider
 } from "@clerk/nextjs";
@@ -42,6 +43,7 @@ export default function RootLayout({
             </ConvexClientProvider>
 
             <Footer />
+            <ToastProvider />
           </main>
         </body>
       </html>
