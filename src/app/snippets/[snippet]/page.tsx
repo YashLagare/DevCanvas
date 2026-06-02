@@ -13,7 +13,9 @@ import CopyButton from "./_components/CopyButton";
 import SnippetLoadingSkeleton from "./_components/SnippetLoadingSkeleton";
 
 function SnippetDetailPage() {
-    const snippetId = useParams().id;
+    const snippetId = useParams().snippet;
+
+    if (!snippetId) return <SnippetLoadingSkeleton />;
 
     const snippet = useQuery(api.snippets.getSnippetById, { snippetId: snippetId as Id<"snippets"> });
     const comments = useQuery(api.snippets.getComments, { snippetId: snippetId as Id<"snippets"> });
