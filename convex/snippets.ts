@@ -81,10 +81,8 @@ export const starSnippet = mutation({
 
         const existing = await ctx.db
             .query("stars")
-            .withIndex("by_user_id_and_snippet_id")
-            .filter(
-                (q) =>
-                    q.eq(q.field("userId"), identity.subject) && q.eq(q.field("snippetId"), args.snippetId)
+            .withIndex("by_user_id_and_snippet_id", (q) =>
+                q.eq("userId", identity.subject).eq("snippetId", args.snippetId)
             )
             .first();
 
@@ -184,10 +182,8 @@ export const isSnippetStarred = query({
 
         const star = await ctx.db
             .query("stars")
-            .withIndex("by_user_id_and_snippet_id")
-            .filter(
-                (q) =>
-                    q.eq(q.field("userId"), identity.subject) && q.eq(q.field("snippetId"), args.snippetId)
+            .withIndex("by_user_id_and_snippet_id", (q) =>
+                q.eq("userId", identity.subject).eq("snippetId", args.snippetId)
             )
             .first();
 
