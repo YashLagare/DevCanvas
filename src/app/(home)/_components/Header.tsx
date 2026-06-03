@@ -1,8 +1,9 @@
 import { SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
-import { Blocks, Code2, Sparkles } from "lucide-react";
+import { Code2, Sparkles } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { api } from "../../../../convex/_generated/api";
 import HeaderProfileBtn from "./HeaderProfileBtn";
 import LanguageSelector from "./LanguageSelector";
@@ -37,7 +38,7 @@ async function Header() {
                             className="relative bg-gradient-to-br from-[#1a1a2e] to-[#0a0a0f] p-2 rounded-xl ring-1
               ring-white/10 group-hover:ring-white/20 transition-all"
                         >
-                            <Blocks className="size-6 text-blue-400 transform -rotate-6 group-hover:rotate-0 transition-transform duration-500" />
+                            <Image src="/logo.png" alt="DevCanvas Logo" width={24} height={24} className="w-6 h-6 transform -rotate-6 group-hover:rotate-0 transition-transform duration-500" />
                         </div>
 
                         <div className="flex flex-col">

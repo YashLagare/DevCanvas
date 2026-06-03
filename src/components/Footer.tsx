@@ -1,4 +1,4 @@
-import { Blocks } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 function Footer() {
@@ -8,9 +8,35 @@ function Footer() {
             <div className="max-w-7xl mx-auto px-4 py-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-2 text-gray-400">
-                        <Blocks className="size-5" />
-                        <span>© 2026 DevCanvas</span>
+                        <Image src="/logo.png" alt="DevCanvas Logo" width={20} height={20} />
+
+                        <span>© {new Date().getFullYear()} DevCanvas</span>
+
+                        <a
+                            href="https://github.com/yashlagare"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Visit Yash Lagare GitHub Profile"
+                            className="hover:text-gray-300 transition-colors"
+                        >
+                            • Built by Yash Lagare
+                        </a>
                     </div>
+                    {/* <div className="flex items-center gap-2 text-gray-400">
+                        <Image src="/logo.png" alt="DevCanvas Logo" width={20} height={20} />
+                        <span>
+                            © {new Date().getFullYear()} DevCanvas 
+                            <a
+                                href="https://github.com/yashlagare"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit Yash Lagare GitHub Profile"
+                                className="text-gray-400 hover:text-gray-300 transition-colors"
+                            >
+                                Built by Yash Lagare
+                            </a> 
+                        </span>
+                    </div> */}
                     <div className="flex items-center gap-6">
                         <Link href="/support" className="text-gray-400 hover:text-gray-300 transition-colors">
                             Support
@@ -21,9 +47,15 @@ function Footer() {
                         <Link href="/terms" className="text-gray-400 hover:text-gray-300 transition-colors">
                             Terms
                         </Link>
-                        <Link href="https://portfolio-five-opal-53.vercel.app/" className="text-gray-400 hover:text-gray-300 transition-colors">
+                        <a
+                            href="https://portfolio-five-opal-53.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Visit Yash Lagare Portfolio"
+                            className="text-gray-400 hover:text-gray-300 transition-colors"
+                        >
                             Portfolio
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

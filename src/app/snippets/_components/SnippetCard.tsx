@@ -81,7 +81,6 @@ function SnippetCard({ snippet }: { snippet: Snippet }) {
                                 onClick={(e) => e.preventDefault()}
                             >
                                 <StarButton snippetId={snippet._id} />
-                                <p>Star button</p>
 
                                 {user?.id === snippet.userId && (
                                     <div className="z-10" onClick={(e) => e.preventDefault()}>

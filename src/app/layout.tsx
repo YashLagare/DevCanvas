@@ -23,6 +23,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "DevCanvas - Your Coding Workspace",
   description: "DevCanvas - Your Coding Workspace",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

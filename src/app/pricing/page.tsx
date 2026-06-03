@@ -4,7 +4,7 @@ import NavigationHeader from "@/components/NavigationHeader";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
-import { Star } from "lucide-react";
+import { IndianRupee, Star } from "lucide-react";
 import { api } from "../../../convex/_generated/api";
 import FeatureCategory from "./_components/FeatureCategory";
 import FeatureItem from "./_components/FeatureItem";
@@ -93,7 +93,7 @@ async function PricingPage() {
                                     </div>
                                     <h2 className="text-3xl font-semibold text-white mb-4">Lifetime Pro Access</h2>
                                     <div className="flex items-baseline justify-center gap-2 mb-4">
-                                        <span className="text-2xl text-gray-400">$</span>
+                                        <IndianRupee className="size-6 text-gray-400" />
                                         <span className="text-6xl font-semibold bg-gradient-to-r from-gray-100 to-gray-300 text-transparent bg-clip-text">
                                             199
                                         </span>
