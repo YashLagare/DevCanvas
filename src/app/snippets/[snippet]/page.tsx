@@ -18,15 +18,12 @@ function SnippetDetailPage() {
     const snippetId = params.snippet;
 
     // Call hooks unconditionally to satisfy React Hooks rules.
-    // When `snippetId` is not available we pass `undefined` so the query is inert.
-    const snippet = useQuery(
-        api.snippets.getSnippetById,
-        snippetId ? ({ snippetId: snippetId as Id<"snippets"> } as any) : undefined
-    );
-    const comments = useQuery(
-        api.snippets.getComments,
-        snippetId ? ({ snippetId: snippetId as Id<"snippets"> } as any) : undefined
-    );
+    // When `snippetId` is not available we pass "skip" so the query is inert.
+    const snippetQueryParams = snippetId
+        ? { snippetId: snippetId as Id<"snippets"> }
+        : "skip";
+    const snippet = useQuery(api.snippets.getSnippetById, snippetQueryParams);
+    const comments = useQuery(api.snippets.getComments, snippetQueryParams);
 
     if (!snippetId) return <SnippetLoadingSkeleton />;
 
