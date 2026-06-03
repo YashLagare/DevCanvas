@@ -13,12 +13,21 @@ import CopyButton from "./_components/CopyButton";
 import SnippetLoadingSkeleton from "./_components/SnippetLoadingSkeleton";
 
 function SnippetDetailPage() {
-    const snippetId = useParams().snippet;
+    const params = useParams();
+    const snippetId = params.snippet;
+
+    // Call hooks unconditionally to satisfy React Hooks rules.
+    // When `snippetId` is not available we pass `undefined` so the query is inert.
+    const snippet = useQuery(
+        api.snippets.getSnippetById,
+        snippetId ? ({ snippetId: snippetId as Id<"snippets"> } as any) : undefined
+    );
+    const comments = useQuery(
+        api.snippets.getComments,
+        snippetId ? ({ snippetId: snippetId as Id<"snippets"> } as any) : undefined
+    );
 
     if (!snippetId) return <SnippetLoadingSkeleton />;
-
-    const snippet = useQuery(api.snippets.getSnippetById, { snippetId: snippetId as Id<"snippets"> });
-    const comments = useQuery(api.snippets.getComments, { snippetId: snippetId as Id<"snippets"> });
 
     if (snippet === undefined) return <SnippetLoadingSkeleton />;
 
