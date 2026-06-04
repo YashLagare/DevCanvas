@@ -4,9 +4,10 @@ import "../app/globals.css";
 
 import Footer from "@/components/Footer";
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
+import ScreenTooSmallGuard from "@/components/ScreenTooSmallGuard";
 import ToastProvider from "@/components/ToastProvider";
 import {
-  ClerkProvider
+    ClerkProvider
 } from "@clerk/nextjs";
 
 const geistSans = localFont({
@@ -39,6 +40,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 flex flex-col`}
         >
+          <ScreenTooSmallGuard />
 
           <main className="mx-auto w-full px-6 py-12 sm:px-8">
             <ConvexClientProvider>
