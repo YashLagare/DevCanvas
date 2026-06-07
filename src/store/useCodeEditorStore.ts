@@ -1,4 +1,3 @@
-import { LANGUAGE_CONFIG } from "@/app/(home)/_constants";
 import { Monaco } from "@monaco-editor/react";
 import { create } from "zustand";
 import { CodeEditorState } from "./../types/index";
@@ -83,67 +82,14 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
             set({ isRunning: true, error: null, output: "" });
 
             try {
-                const runtime = LANGUAGE_CONFIG[language].pistonRuntime;
-                const response = await fetch("https://emkc.org/api/v2/piston/execute", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        language: runtime.language,
-                        version: runtime.version,
-                        files: [{ content: code }],
-                    }),
-                });
+                // Simulate a brief delay for realistic UX
+                await new Promise(resolve => setTimeout(resolve, 500));
 
-                const data = await response.json();
-
-                console.log("data back from piston:", data);
-
-                // handle API-level erros
-                if (data.message) {
-                    set({ error: data.message, executionResult: { code, output: "", error: data.message } });
-                    return;
-                }
-
-                // handle compilation errors
-                if (data.compile && data.compile.code !== 0) {
-                    const error = data.compile.stderr || data.compile.output;
-                    set({
-                        error,
-                        executionResult: {
-                            code,
-                            output: "",
-                            error,
-                        },
-                    });
-                    return;
-                }
-
-                if (data.run && data.run.code !== 0) {
-                    const error = data.run.stderr || data.run.output;
-                    set({
-                        error,
-                        executionResult: {
-                            code,
-                            output: "",
-                            error,
-                        },
-                    });
-                    return;
-                }
-
-                // if we get here, execution was successful
-                const output = data.run.output;
+                const infoMessage = "Code execution is currently unavailable because the public code execution service used by this application has been discontinued for public access. All other features—including the editor, syntax highlighting, language switching, themes, code persistence, snippets sharing and payments—remain fully functional.";
 
                 set({
-                    output: output.trim(),
-                    error: null,
-                    executionResult: {
-                        code,
-                        output: output.trim(),
-                        error: null,
-                    },
+                    error: infoMessage,
+                    executionResult: { code, output: "", error: infoMessage }
                 });
             } catch (error) {
                 console.log("Error running code:", error);

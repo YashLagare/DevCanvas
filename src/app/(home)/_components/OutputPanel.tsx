@@ -1,7 +1,7 @@
 "use client";
 
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
-import { AlertTriangle, CheckCircle, Clock, Copy, Terminal } from "lucide-react";
+import { AlertTriangle, CheckCircle, Clock, Copy, Terminal, Info } from "lucide-react";
 import { useState } from "react";
 import RunningCodeSkeleton from "./RunningCodeSkeleton";
 
@@ -60,13 +60,23 @@ function OutputPanel() {
           {isRunning ? (
             <RunningCodeSkeleton />
           ) : error ? (
-            <div className="flex items-start gap-3 text-red-400">
-              <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-1" />
-              <div className="space-y-1">
-                <div className="font-medium">Execution Error</div>
-                <pre className="whitespace-pre-wrap text-red-400/80">{error}</pre>
+            error.includes("Code execution is currently unavailable") ? (
+              <div className="flex items-start gap-3 text-yellow-400">
+                <Info className="w-5 h-5 flex-shrink-0 mt-1" />
+                <div className="space-y-1">
+                  <div className="font-medium">Service Unavailable</div>
+                  <p className="whitespace-pre-wrap text-yellow-400/80">{error}</p>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="flex items-start gap-3 text-red-400">
+                <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-1" />
+                <div className="space-y-1">
+                  <div className="font-medium">Execution Error</div>
+                  <pre className="whitespace-pre-wrap text-red-400/80">{error}</pre>
+                </div>
+              </div>
+            )
           ) : output ? (
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-emerald-400 mb-3">
