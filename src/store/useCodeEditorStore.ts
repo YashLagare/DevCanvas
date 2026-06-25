@@ -85,7 +85,18 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
                 // Simulate a brief delay for realistic UX
                 await new Promise(resolve => setTimeout(resolve, 500));
 
-                const infoMessage = "Code execution is currently unavailable because the public code execution service used by this application has been discontinued for public access. All other features—including the editor, syntax highlighting, language switching, themes, code persistence, snippets sharing and payments—remain fully functional.";
+                const infoMessage = `Code Execution Temporarily Unavailable
+
+The code execution feature is currently unavailable because the third-party execution service (Piston API) has restricted public access.
+
+All other platform features remain fully functional, including:
+• Code editor and syntax highlighting
+• Multi-language support
+• Theme customization
+• Snippet creation and sharing
+• User authentication
+• Bookmarks and comments
+• Subscription and payment features`;
 
                 set({
                     error: infoMessage,
