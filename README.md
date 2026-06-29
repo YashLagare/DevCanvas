@@ -152,8 +152,6 @@ Build Tools
 
 # 4. FEATURES LIST
 
-> All features below are derived directly from existing code.
-
 ## 4.1 Snippet browsing
 - Purpose: browse community snippets
 - User Benefit: discover snippets with filters
