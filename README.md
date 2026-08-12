@@ -49,9 +49,6 @@ Client uses Convex React hooks (`useQuery`, `useMutation`, `usePaginatedQuery`) 
 
 # 2. PROJECT OVERVIEW
 
-## Project Name
-DevCanvas
-
 ## Objective
 Enable authenticated users to share and discover code snippets with interactive social features and subscription-based access control for code execution.
 
