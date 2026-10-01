@@ -918,5 +918,5 @@ Realistic improvements based on current architecture:
 
 ---
 
-Written by Yash Lagare.
+Written by Yash Lagare
 
